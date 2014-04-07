@@ -43,7 +43,7 @@ if (!$DataFile = fopen("preview.csv", "a")) {echo "Failure: cannot open file"; d
 
 // Is the banner showing? Track yes and track no (hidden)
 
-$echo $parts[2];
+echo $parts[2];
 
 if($parts[2] == 'show') {
 
