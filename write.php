@@ -36,35 +36,36 @@ $navString = $_SERVER['REQUEST_URI'];
 
 $parts = explode('/', $navString); // Break into an array
 $now = time();
+$data = array($now, $parts[3], $parts[4]);
 
 if (!$DataFile = fopen("preview.csv", "a")) {echo "Failure: cannot open file"; die;};
 
 // Is the banner showing? Track yes and track no (hidden)
 
-if($parts[2] == 'show') {
+if($parts[3] == 'show') {
 
-  if($parts[3] == 'yes') {
-    if (!fputcsv($DataFile, '"'.$now.'";"show";"yes"')) {echo "Failure: cannot write to file"; die;};
+  if($parts[4] == 'yes') {
+    if (!fputcsv($DataFile, $data)) {echo "Failure: cannot write to file"; die;};
   } else {
-    if (!fputcsv($DataFile, '"'.$now.'";"show";"no"')) {echo "Failure: cannot write to file"; die;};
+    if (!fputcsv($DataFile, $data)) {echo "Failure: cannot write to file"; die;};
   }
 
 }
 
-if($parts[2] == 'click') {
+if($parts[3] == 'click') {
 
-  if($parts[3] == 'close') {
+  if($parts[4] == 'close') {
     // Clicked to hide banner?
-    if (!fputcsv($DataFile, '"'.$now.'";"click";"close"')) {echo "Failure: cannot write to file"; die;};
+    if (!fputcsv($DataFile, $data)) {echo "Failure: cannot write to file"; die;};
   }
 
-  if($parts[3] == 'preview') {
+  if($parts[4] == 'preview') {
     // Clicked to show preview?
-    if (!fputcsv($DataFile, '"'.$now.'";"click";"preview"')) {echo "Failure: cannot write to file"; die;};
+    if (!fputcsv($DataFile, $data)) {echo "Failure: cannot write to file"; die;};
   }
 
-  if($parts[3] == 'feedback') {
+  if($parts[4] == 'feedback') {
     // Clicked to Give feedback?
-    if (!fputcsv($DataFile, '"'.$now.'";"click";"feedback"')) {echo "Failure: cannot write to file"; die;};
+    if (!fputcsv($DataFile, $data)) {echo "Failure: cannot write to file"; die;};
   }
 }
