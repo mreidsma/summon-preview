@@ -34,12 +34,16 @@ URL structure:
 
 $navString = $_SERVER['REQUEST_URI'];
 
+echo $navString;
+
 $parts = explode('/', $navString); // Break into an array
 $now = time();
 
 if (!$DataFile = fopen("preview.csv", "a")) {echo "Failure: cannot open file"; die;};
 
 // Is the banner showing? Track yes and track no (hidden)
+
+$echo $parts[2];
 
 if($parts[2] == 'show') {
 
