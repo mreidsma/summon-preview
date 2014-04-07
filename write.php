@@ -1,6 +1,5 @@
 <?php
 
-require('config-preview.php');
 header("Access-Control-Allow-Origin: *");
 
 /*
@@ -49,7 +48,7 @@ if($parts[2] == 'show') {
   } else {
     if (!fputcsv($DataFile, '"'.$now.'";"show";"no"')) {echo "Failure: cannot write to file"; die;};
   }
-  
+
 }
 
 if($parts[2] == 'click') {
